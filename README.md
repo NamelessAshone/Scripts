@@ -1,4 +1,4 @@
-#About
+# About
 This directory contains some useful scripts.
 In directory */AcrossGFW* I collected some scripts for automatic installation
 of SS/SSR/V2Ray on vps.
