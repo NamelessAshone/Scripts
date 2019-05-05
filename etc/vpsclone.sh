@@ -1,4 +1,4 @@
-#! /usr/bin/env expect -D
+#! /usr/bin/env expect
 # Description: Due to slow speed of Github in China, this script clone project
 #              from Githug by your vps.
 # Auther     : Shu ShuXin
