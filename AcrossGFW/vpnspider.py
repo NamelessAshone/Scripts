@@ -2,6 +2,14 @@
 '''
     This program is used to craw *ssr url* encoded by base64 or QR code.
 
+    HOW TO INSTALL:
+        1.Make sure you have installed Python3 and pip3.
+        2.Using *pip3 install base64 requests dotenv os
+          pyperclip bs4 PIL pyzbar*.
+        3.If you are working on Linux, you need to install
+          libzbar0 for pyzbar. For  Ubuntu, just like this
+          *sudo apt-get install libzbar0*.
+
     :Author  ShuXin Shu
     :Date    2019年 05月 05日 星期日 16:03:35 CST
     :License MIT-License
