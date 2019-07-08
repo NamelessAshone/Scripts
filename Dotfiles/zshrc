@@ -50,7 +50,7 @@ ZSH_THEME="lambdax"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -63,6 +63,18 @@ plugins=(
   git
   vi-mode
   colored-man-pages
+  command-not-found
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  git-open
+  z
+  encode64
+  catimg
+  last-working-dir
+  web-search
+  wd
+  sudo
+  extract
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -112,19 +124,21 @@ zle -N zle-keymap-select
 
 RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
 
+# [**] use proxychain-ng, don't use this
 # my proxy settings
-alias proxy='export all_proxy=socks5://127.0.0.1:1080; export http_proxy=http://127.0.0.1:1080; export https_proxy=http://127.0.0.1:1080 '
-alias unproxy='unset all_proxy; unset http_proxy; unset https_proxy'
+# alias proxy='export all_proxy=socks5://127.0.0.1:1080; export http_proxy=http://127.0.0.1:1080; export https_proxy=http://127.0.0.1:1080 '
+# alias unproxy='unset all_proxy; unset http_proxy; unset https_proxy'
 
-export CLASSPATH=$CLASSPATH:~/algs4/algs4.jar
-alias jalgs4c=javac-algs4
-alias jalgs4=java-algs4
-alias jalgs4r='run() {javac-algs4 $1.java; java-algs4 $1 $2}; run'
+# [**] for algorithm4 practice
+# export CLASSPATH=$CLASSPATH:~/algs4/algs4.jar
+# alias jalgs4c=javac-algs4
+# alias jalgs4=java-algs4
+# alias jalgs4r='run() {javac-algs4 $1.java; java-algs4 $1 $2}; run'
 
 alias javar='javaRun() {javac $1.java; java $1 $2}; javaRun'
 alias youtube='youtube-dl --proxy socks5://127.0.0.1:1080/'
-export GOPATH=/home/ash/Codes/gocode
-export PATH=$PATH:$GOPATH/bin
+# export GOPATH=/home/ash/Codes/gocode
+# export PATH=$PATH:$GOPATH/bin
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -140,11 +154,38 @@ alias vpsget="vpsget.sh 120.79.37.96 ash wemustknow"
 # pipenv settings
 export PIPENV_VENV_IN_PROJECT=1
 
+# ******** alias **********
 # exa settings
 alias ea="exa -la"
 alias el="exa -l"
 alias pc="proxychains4"
+alias ra="ranger"
 # hub settings
 eval "$(hub alias -s)"
 # nvim alias
 alias nv="nvim"
+# history alias
+alias h="history"
+# autosuggest-accept key
+bindkey ',' autosuggest-accept
+
+# python better exceptions enabled
+export BETTER_EXCEPTIONS=1  # Linux / OSX
+
+# TILI FIX
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+            source /etc/profile.d/vte.sh
+        fi
+
+# ranger setting
+export VISUAL=nvim
+export PAGER=more
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
+# i3wm startup
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
+# Neovim run config
+# export $NVIMRC=/home/ash/.config/nvim/init.vim

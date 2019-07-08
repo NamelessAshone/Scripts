@@ -15,7 +15,7 @@ if !filereadable(vimplug_exists)
   endif
   echo "Installing Vim-Plug..."
   echo ""
-  silent exec "!\curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  silent exec "!\curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
   let g:not_finish_vimplug = "yes"
 
   autocmd VimEnter * PlugInstall
@@ -55,6 +55,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'janko-m/vim-test'
 Plug 'parkr/vim-jekyll'
 Plug 'junegunn/gv.vim'
+Plug 'KabbAmine/zeavim.vim'
 "Plug 'sjl/gundo.vim'
 " Gundo settings
 "nnoremap <F5> :GundoToggle<CR>
@@ -591,6 +592,12 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 " Nerdtree width
 let g:NERDTreeWinSize = 30
+" mappings for zeal
+nmap <leader>Z <Plug>Zeavim
+vmap <leader>Z <Plug>ZVVisSelection
+nmap gz <Plug>ZVOperator
+nmap <leader><leader>z <Plug>ZVKeyDocset
+
 "*********************terminal mode settings*************************
 tnoremap <A-\> <C-\><C-n>
 tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
