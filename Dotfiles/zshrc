@@ -163,11 +163,14 @@ alias ra="ranger"
 # hub settings
 eval "$(hub alias -s)"
 # nvim alias
-alias nv="nvim"
+alias v="nvim"
 # history alias
 alias h="history"
 # autosuggest-accept key
-bindkey ',' autosuggest-accept
+bindkey '^[,' autosuggest-accept
+# ls aliases
+alias lsd='f(){ ls -F $1 | grep "/$" } ; f '
+alias lsda='f(){ ls -lah  $1 | grep "^d" } ; f '
 
 # python better exceptions enabled
 export BETTER_EXCEPTIONS=1  # Linux / OSX
@@ -186,6 +189,3 @@ if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
-
-# Neovim run config
-# export $NVIMRC=/home/ash/.config/nvim/init.vim

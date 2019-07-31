@@ -44,52 +44,6 @@ Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 
-"*****************************************************************************
-" my plugins
-"*****************************************************************************
-Plug 'lufeihaidao/vim-term-color'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
-Plug 'janko-m/vim-test'
-Plug 'parkr/vim-jekyll'
-Plug 'junegunn/gv.vim'
-Plug 'KabbAmine/zeavim.vim'
-"Plug 'sjl/gundo.vim'
-" Gundo settings
-"nnoremap <F5> :GundoToggle<CR>
-
-Plug 'luochen1990/rainbow'
-" rainbow settings
-let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
-let g:rainbow_conf = {
-\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-\	'operators': '_,_',
-\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-\	'separately': {
-\		'*': {},
-\		'tex': {
-\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-\		},
-\		'lisp': {
-\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-\		},
-\		'vim': {
-\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-\		},
-\		'html': {
-\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-\		},
-\		'css': 0,
-\	}
-\}
-
-" my games
-Plug 'johngrib/vim-game-code-break'
-"***********************************************************************************************
-
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -141,6 +95,50 @@ Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 
+"*****************************************************************************
+" my plugins
+"*****************************************************************************
+Plug 'lufeihaidao/vim-term-color'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'janko-m/vim-test'
+"Plug 'parkr/vim-jekyll'
+Plug 'junegunn/gv.vim'
+Plug 'KabbAmine/zeavim.vim'
+"Plug 'luochen1990/rainbow'
+Plug 'mfukar/robotframework-vim'
+
+" rainbow settings
+let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\		'*': {},
+\		'tex': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\		},
+\		'lisp': {
+\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\		},
+\		'vim': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\		},
+\		'html': {
+\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'css': 0,
+\	}
+\}
+
+" my games
+Plug 'johngrib/vim-game-code-break'
+
+"*****************************************************************************
 "*****************************************************************************
 "*****************************************************************************
 
@@ -407,10 +405,11 @@ nnoremap <silent> <leader>e :FZF -m<CR>
 nmap <leader>y :History:<CR>
 
 " snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 
 " ale
 let g:ale_linters = {}
@@ -576,9 +575,15 @@ else
 endif
 
 "***************************my settings******************************
+set fileencodings=utf-8,gbk
 set showcmd
 set showmode
 set mouse=a
+set synmaxcol=300
+set timeout           " for mappings
+set timeoutlen=1000   " default value
+set ttimeout          " for key codes
+set ttimeoutlen=10    " unnoticeable small value
 " window resize
 noremap <Leader>< <C-w>10<
 noremap <Leader>> <C-w>10>
@@ -589,7 +594,8 @@ nmap <silent> <F5> :ALEToggle<CR>
 " lint on text changed
 let g:ale_lint_on_text_changed = 'never'
 " don't lint on enter
-let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_enter = 0
+
 " Nerdtree width
 let g:NERDTreeWinSize = 30
 " mappings for zeal
@@ -597,6 +603,9 @@ nmap <leader>Z <Plug>Zeavim
 vmap <leader>Z <Plug>ZVVisSelection
 nmap gz <Plug>ZVOperator
 nmap <leader><leader>z <Plug>ZVKeyDocset
+
+" Press space twice to jump to the next '<++>' and edit it
+map <leader><leader> <Esc>/<++><CR>:noh<CR>cw
 
 "*********************terminal mode settings*************************
 tnoremap <A-\> <C-\><C-n>
