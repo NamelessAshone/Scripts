@@ -166,6 +166,9 @@ eval "$(hub alias -s)"
 alias v="nvim"
 # history alias
 alias h="history"
+# what I done today?
+alias whatidone="h | grep $(date +'%Y-%m-%d')"
+
 # autosuggest-accept key
 bindkey '^[,' autosuggest-accept
 # ls aliases
