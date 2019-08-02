@@ -584,6 +584,8 @@ set timeout           " for mappings
 set timeoutlen=1000   " default value
 set ttimeout          " for key codes
 set ttimeoutlen=10    " unnoticeable small value
+set cursorline
+set incsearch
 " window resize
 noremap <Leader>< <C-w>10<
 noremap <Leader>> <C-w>10>
@@ -606,6 +608,25 @@ nmap <leader><leader>z <Plug>ZVKeyDocset
 
 " Press space twice to jump to the next '<++>' and edit it
 map <leader><leader> <Esc>/<++><CR>:noh<CR>cw
+
+" command reuse setting
+cnoremap <C-n> <Down>
+cnoremap <C-p> <Up>
+
+" for sudo save
+command SW w !sudo tee % > /dev/null 
+
+" hard mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+" superhard mode
+" noremap h <NOP>
+" noremap j <NOP>
+" noremap k <NOP>
+" noremap l <NOP>
 
 "*********************terminal mode settings*************************
 tnoremap <A-\> <C-\><C-n>
