@@ -1,15 +1,24 @@
 #! /usr/bin/env expect
 
 set HOST    [lindex $argv 0]
-
+set ENCODING  [lindex $argv 1]
 set P   "1qaz@WSX"
+set P2  "INtd!@#123"
 
-if {[llength $HOST] == 0} {
-    send_user "Usage: gohost <HOST>\n"
+if { [llength $HOST] == 0} {
+    send_user "Usage: gohost <HOST> [ gbk | GBK ]\n"
+    send_user "Add argument GBK/gbk to connecting <host> with GBK encoding. This feature POWERED BY 'luit'."
     send_user "Avaible host list:\n\tinformix\n\tismp\n"
 }
 
-spawn ssh $HOST
+if { $HOST == "hdh" } {
+    set P "$P2"
+}
+if { $ENCODING == "GBK" || $ENCODING == "gbk" } {
+    spawn luit -encoding GBK ssh $HOST
+} else {
+    spawn ssh $HOST
+}
 sleep 1
 send_user $P
 expect {

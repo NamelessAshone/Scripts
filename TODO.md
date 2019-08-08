@@ -1,4 +1,4 @@
 # Todo lists
 
-* [ ] automate the installation of `init.vim` and `zshrc`
+* [x] automate the installation of `init.vim` and `zshrc`
 
