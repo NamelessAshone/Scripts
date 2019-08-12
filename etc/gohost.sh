@@ -1,9 +1,10 @@
 #! /usr/bin/env expect
 
-set HOST    [lindex $argv 0]
-set ENCODING  [lindex $argv 1]
-set P   "1qaz@WSX"
-set P2  "INtd!@#123"
+set HOST        [lindex $argv 0]
+set ENCODING    [lindex $argv 1]
+set IS_SFTP     [lindex $argv 2]
+set P           "1qaz@WSX"
+set P2          "INtd!@#123"
 
 if { [llength $HOST] == 0} {
     send_user "Usage: gohost <HOST> [ gbk | GBK ]\n"
@@ -14,13 +15,18 @@ if { [llength $HOST] == 0} {
 if { $HOST == "hdh" } {
     set P "$P2"
 }
-if { $ENCODING == "GBK" || $ENCODING == "gbk" } {
-    spawn luit -encoding GBK ssh $HOST
+if { $IS_SFTP == "SFTP" || $IS_SFTP == "sftp"} {
+    spawn sftp $HOST
 } else {
-    spawn ssh $HOST
+    if { $ENCODING == "GBK" || $ENCODING == "gbk" } {
+        spawn luit -encoding GBK ssh $HOST
+    } else {
+        spawn ssh $HOST
+    }
 }
+
 sleep 1
-send_user $P
+# send_user $P
 expect {
     timeout      {
         send_user "timeout\n";
@@ -35,6 +41,7 @@ expect {
                 exit 1
             }
             "*$*" interact
+            "*sftp>*" interact
         }
     }
 }
