@@ -109,6 +109,7 @@ Plug 'junegunn/gv.vim'
 Plug 'KabbAmine/zeavim.vim'
 "Plug 'luochen1990/rainbow'
 Plug 'mfukar/robotframework-vim'
+Plug 'lilydjwg/colorizer'
 
 " rainbow settings
 let g:rainbow_active = 0 "0 if you want to enable it later via :RainbowToggle

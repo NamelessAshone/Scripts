@@ -175,6 +175,7 @@ bindkey '^[,' autosuggest-accept
 alias lsd='f(){ ls -F $1 | grep "/$" } ; f '
 alias lsda='f(){ ls -lah  $1 | grep "^d" } ; f '
 alias gwd="wd \$(wd list | tail -n +2 | fzf | awk '{ print \$1}')"
+alias wda="wd add"
 
 # python better exceptions enabled
 export BETTER_EXCEPTIONS=1  # Linux / OSX
