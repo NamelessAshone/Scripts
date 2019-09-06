@@ -12,7 +12,7 @@ if { [llength $HOST] == 0} {
     send_user "Avaible host list:\n\tinformix\n\tismp\n"
 }
 
-if { $HOST == "hdh" } {
+if { $HOST == "hdh" || $HOST == "bms" || $HOST == "bms-ykdhyh"} {
     set P "$P2"
 }
 if { $IS_SFTP == "SFTP" || $IS_SFTP == "sftp"} {
