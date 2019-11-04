@@ -472,6 +472,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
+" robot
+autocmd FileType robot setlocal tabstop=4 shiftwidth=4 expandtab
 
 " c
 autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab

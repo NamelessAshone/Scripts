@@ -12,9 +12,15 @@ if { [llength $HOST] == 0} {
     send_user "Avaible host list:\n\tinformix\n\tismp\n"
 }
 
-if { $HOST == "hdh" || $HOST == "bms" || $HOST == "bms-ykdhyh"} {
-    set P "$P2"
+# Host using P2
+set HOST_P2_LIST "hdh bms bms-ykdhyh yyht"
+
+foreach phost $HOST_P2_LIST {
+    if {$phost == $HOST} {
+        set P "$P2"
+    }
 }
+
 if { $IS_SFTP == "SFTP" || $IS_SFTP == "sftp"} {
     spawn sftp $HOST
 } else {
