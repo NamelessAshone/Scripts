@@ -61,7 +61,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  vi-mode
+# vi-mode
   colored-man-pages
   command-not-found
   zsh-syntax-highlighting
@@ -114,15 +114,15 @@ source $ZSH/oh-my-zsh.sh
 
 #################### my settings #############################
 # vi-mode support
-VIMODE='- I -'
-function zle-line-init zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/- N -}/(main|viins)/- I -}"
-	zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+# VIMODE='- I -'
+# function zle-line-init zle-keymap-select {
+#     VIMODE="${${KEYMAP/vicmd/- N -}/(main|viins)/- I -}"
+# 	zle reset-prompt
+# }
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 
-RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
+# RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
 
 # [**] use proxychain-ng, don't use this
 # my proxy settings
@@ -148,9 +148,10 @@ eval $(thefuck --alias)
 
 # add my tool scripts
 export PATH=/home/ash/Codes/Scripts/etc:/home/ash/Codes/Scripts/AcrossGFW:$PATH
-alias vpsclone="vpsclone.sh 120.79.37.96 ash wemustknow"
-alias vpsget="vpsget.sh 120.79.37.96 ash wemustknow"
-
+export FONTLIST=/home/ash/Codes/Scripts/etc/fontawesome
+# alias vpsclone="vpsclone.sh 120.79.37.96 ash wemustknow"
+# alias vpsget="vpsget.sh 120.79.37.96 ash wemustknow"
+alias fa="cat $FONTLIST | awk '{gsub(/fa-|;/, \"\"); printf \"%-4d| %-3s| %6s | %-35s| %-2s\t|\n\", NR, \$1, \$3, \$2, \$4}' | fzf | awk '{gsub(/\|/,\"\"); print \$2}'"
 # pipenv settings
 export PIPENV_VENV_IN_PROJECT=1
 
