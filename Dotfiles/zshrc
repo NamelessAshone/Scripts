@@ -75,6 +75,7 @@ plugins=(
   wd
   sudo
   extract
+  svn
 )
 
 source $ZSH/oh-my-zsh.sh
