@@ -196,3 +196,23 @@ if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
+
+# powerset
+function powerset() (
+  list=($@)
+  eval binary=( $(for ((i=0; i < ${#list[@]}; i++)); do printf '%s' "{0..1}"; done) )
+  nonempty=0
+  for (( power=0; power < ${#binary[*]}; power++ ))
+  do
+    binrep=${binary[power]}
+    for ((charindex=0; charindex < ${#list[*]}; charindex++))
+    do
+      if [[ ${binrep:charindex:1} = "1" ]]
+      then
+         printf "%s " ${list[charindex]}
+         nonempty=1
+      fi
+    done
+    [[ $nonempty -eq 1 ]] && printf "\n"
+  done
+)

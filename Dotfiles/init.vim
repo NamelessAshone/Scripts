@@ -610,7 +610,7 @@ nmap gz <Plug>ZVOperator
 nmap <leader><leader>z <Plug>ZVKeyDocset
 
 " Press space twice to jump to the next '<++>' and edit it
-map <leader><leader> <Esc>/<++><CR>:noh<CR>cw
+map <leader><leader> <Esc>/<++><CR>:noh<CR>c4l
 
 " command reuse setting
 cnoremap <C-n> <Down>
