@@ -76,6 +76,7 @@ plugins=(
   sudo
   extract
   svn
+  navi
 )
 
 source $ZSH/oh-my-zsh.sh
