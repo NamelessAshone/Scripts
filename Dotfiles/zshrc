@@ -200,15 +200,23 @@ fi
 
 # powerset
 function powerset() (
-  list=($@)
-  eval binary=( $(for ((i=0; i < ${#list[@]}; i++)); do printf '%s' "{0..1}"; done) )
-  nonempty=0
+  local list=($@)
+  local eval_str=($(for (( i=0; i < ${#list[@]}; i++ )); do printf '%s' "{0..1}"; done))
+  eval_str='binary=('$eval_str')'
+  echo $eval_str
+  eval $eval_str
+  local nonempty=0
   for (( power=0; power < ${#binary[*]}; power++ ))
   do
-    binrep=${binary[power]}
+    echo ${binary}
+    echo $power
+    local binrep=${binary[power]}
+    echo $binrep
     for ((charindex=0; charindex < ${#list[*]}; charindex++))
     do
-      if [[ ${binrep:charindex:1} = "1" ]]
+      echo $binrep
+      exit 0
+      if [[ ${binrep:charindex:1} -eq "1" ]]
       then
          printf "%s " ${list[charindex]}
          nonempty=1
