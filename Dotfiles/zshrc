@@ -199,29 +199,25 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 fi
 
 # powerset
+# Fixed bug: zsh array index start with 1
+#            bash array index start with 0
 function powerset() (
   local list=($@)
-  local eval_str=($(for (( i=0; i < ${#list[@]}; i++ )); do printf '%s' "{0..1}"; done))
+  local eval_str=($(for (( i=1; i < ${#list[@]}+1; i++ )); do printf '%s' "{0..1}"; done))
   eval_str='binary=('$eval_str')'
-  echo $eval_str
   eval $eval_str
   local nonempty=0
-  for (( power=0; power < ${#binary[*]}; power++ ))
+  for (( power=1; power < ${#binary[*]}+1; power++ ))
   do
-    echo ${binary}
-    echo $power
     local binrep=${binary[power]}
-    echo $binrep
-    for ((charindex=0; charindex < ${#list[*]}; charindex++))
+    for ((charindex=1; charindex < ${#list[*]}+1; charindex++))
     do
-      echo $binrep
-      exit 0
-      if [[ ${binrep:charindex:1} -eq "1" ]]
+        if [[ ${binrep:$charindex-1:1} -eq "1" ]]
       then
-         printf "%s " ${list[charindex]}
+         printf "%s " "${list[charindex]}"
          nonempty=1
       fi
     done
-    [[ $nonempty -eq 1 ]] && printf "\n"
+    [[ "$nonempty" -eq 1 ]] && printf "\n"
   done
 )
