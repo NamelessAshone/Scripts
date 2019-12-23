@@ -221,3 +221,6 @@ function powerset() (
     [[ "$nonempty" -eq 1 ]] && printf "\n"
   done
 )
+
+# golang proxy setting
+export GOPROXY=https://mirrors.aliyun.com/goproxy/

@@ -6,17 +6,56 @@ set FALSE           0
 set TRUE            1
 set IS_GBK_USED     $FALSE
 set IS_SFTP_USED    $FALSE
+set IS_CMD_USED     $FALSE
+set IS_ARGS_EMPTY   $FALSE
+set CMD             ""
 # Host using P2
 set HOST_P2_LIST    {hdh bms bms-ykdhyh yyht}
 
+# def proc for dispatch cmd
+proc do_cmd {pcmd} {
+    array set cmds {
+        "list" "do_list"
+        "help" "do_help"
+    }
+    foreach {cmd proc_name} [array get cmds] {
+        if { $cmd == $pcmd } {
+            $proc_name
+        }
+    }
+    exit 0
+}
+
+proc do_list {} {
+    set awk_proc "
+    BEGIN {
+    }
+    /HOST/ {
+
+    }
+    /User/ {
+
+    }
+    /
+    "
+    puts [awk ""]
+    exit 0
+}
+
+proc do_help {} {
+    set usage_str "Usage:\tgohost <OPTIONS> <HOST>\n\tgohost <HOST> <OPTIONS> \
+    \n\nQuick connect to host. SSH and SFTP both are accepted. \
+    \n\n<OPTIONS>:\n\t-g, --gbk, --GBK\tUsing 'luit -encoding GBK' \
+    \n\t-s, --sftp\t\tUsing 'sftp'\n"
+    puts "$usage_str"
+    exit 0
+}
+
+# TODO: rewrite following logic in one proc
 # Print usage
 if { $argc == 0 } {
-    send_user "Usage:\tgohost <OPTIONS> <HOST>\n\tgohost <HOST> <OPTIONS>"
-    send_user "\n\nQuick connect to host. SSH and SFTP both are accepted."
-    send_user "\n\n<OPTIONS>:\n\t-g, --gbk, --GBK\tUsing 'luit -encoding GBK'"
-    send_user "\n\t-s, --sftp\t\tUsing 'sftp'"
-    send_user "\n"
-    exit 0
+    set IS_ARGS_EMPTY $TRUE
+    do_help
 }
 
 # Parse arguments
@@ -25,9 +64,20 @@ foreach parg $argv {
         set IS_GBK_USED $TRUE
     } elseif { $parg == "--sftp" || $parg == "-s" } {
         set IS_SFTP_USED $TRUE
+    } elseif { $parg == "-h" } {
+        do_help()
+    } elseif { $parg == "list" } {
+        set IS_CMD_USED $TRUE
+        set CMD "list"
     } else {
         set HOST $parg
     }
+}
+
+
+if { $IS_CMD_USED } {
+    do_cmd $CMD
+    exit 0
 }
 
 foreach phost $HOST_P2_LIST {
