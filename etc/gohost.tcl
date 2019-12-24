@@ -26,19 +26,9 @@ proc do_cmd {pcmd} {
     exit 0
 }
 
+# TODO: need a more simple way, reduce dependency
 proc do_list {} {
-    set awk_proc "
-    BEGIN {
-    }
-    /HOST/ {
-
-    }
-    /User/ {
-
-    }
-    /
-    "
-    puts [awk ""]
+    puts [exec cat /home/ash/.ssh/config | gawk -f/home/ash/Codes/Scripts/etc/list.awk]
     exit 0
 }
 
