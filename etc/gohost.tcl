@@ -2,6 +2,7 @@
 
 set P               "1qaz@WSX"
 set P2              "INtd!@#123"
+set P3              "EBupt!@#123"
 set FALSE           0
 set TRUE            1
 set IS_GBK_USED     $FALSE
@@ -11,6 +12,7 @@ set IS_ARGS_EMPTY   $FALSE
 set CMD             ""
 # Host using P2
 set HOST_P2_LIST    {hdh bms bms-ykdhyh yyht}
+set HOST_P3_LIST    {gp_nginx gp1 gp2}
 
 # def proc for dispatch cmd
 proc do_cmd {pcmd} {
@@ -73,6 +75,12 @@ if { $IS_CMD_USED } {
 foreach phost $HOST_P2_LIST {
     if { $phost == $HOST } {
         set P "$P2"
+    }
+}
+
+foreach phost $HOST_P3_LIST {
+    if { $phost == $HOST } {
+        set P "$P3"
     }
 }
 

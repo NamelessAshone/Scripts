@@ -180,6 +180,9 @@ alias lsda='f(){ ls -lah  $1 | grep "^d" } ; f '
 alias gwd="wd \$(wd list | tail -n +2 | fzf | awk '{ print \$1}')"
 alias wda="wd add"
 
+# hexdump aliase
+alias hd='hexdump --canonical '
+
 # python better exceptions enabled
 export BETTER_EXCEPTIONS=1  # Linux / OSX
 
