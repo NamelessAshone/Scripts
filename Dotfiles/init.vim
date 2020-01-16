@@ -617,7 +617,9 @@ cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
 
 " for sudo save
-command SW w !sudo tee % > /dev/null 
+command SW w !sudo tee % > /dev/null
+
+command WGBK w ++enc=gbk %
 
 " hard mode
 noremap <Up> <NOP>
