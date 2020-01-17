@@ -170,7 +170,7 @@ set backspace=indent,eol,start
 set tabstop=4
 set softtabstop=0
 set shiftwidth=4
-set expandtab
+"set expandtab
 
 "" Map leader to ,
 let mapleader=','
@@ -476,8 +476,8 @@ nnoremap <Leader>o :.Gbrowse<CR>
 autocmd FileType robot setlocal tabstop=4 shiftwidth=4 expandtab
 
 " c
-autocmd FileType c setlocal tabstop=4 shiftwidth=4 expandtab
-autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 expandtab
+autocmd FileType c setlocal tabstop=4 shiftwidth=4
+autocmd FileType cpp setlocal tabstop=4 shiftwidth=4
 
 
 " html
@@ -487,6 +487,12 @@ autocmd Filetype html setlocal ts=2 sw=2 expandtab
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
+
+" lua
+autocmd FileType lua setlocal tabstop=4 shiftwidth=4
+
+" lua
+autocmd FileType makefile setlocal tabstop=4 shiftwidth=4
 
 " vim-javascript
 augroup vimrc-javascript
